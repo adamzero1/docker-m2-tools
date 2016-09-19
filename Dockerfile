@@ -1,4 +1,5 @@
 FROM ubuntu:xenial
+ENV DEBIAN_FRONTEND noninteractive
 
 # Postfix Config
 RUN echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set-selections
