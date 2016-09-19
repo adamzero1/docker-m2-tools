@@ -5,7 +5,6 @@ RUN echo "postfix postfix/main_mailer_type string 'Internet Site'" | debconf-set
 
 RUN apt-get update && apt-get install -y --force-yes \
         php7.0-xml \
-	php7.0-fpm \
 	php7.0-mysql \
 	php7.0-curl \
 	php7.0-mcrypt \
