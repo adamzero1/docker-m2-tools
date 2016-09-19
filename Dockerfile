@@ -23,7 +23,7 @@ RUN export TERM=xterm; apt-get update && apt-get install -y --force-yes \
 RUN apt-get clean
 
 # Install composer
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+RUN curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 # Disable local delivery
 RUN sed -i 's/mydestination = .*/mydestination = localhost/' /etc/postfix/main.cf
