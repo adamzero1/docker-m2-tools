@@ -15,9 +15,9 @@ RUN apt-get update && apt-get install -y --force-yes \
 	git-core \
 	postfix \
 	mysql-client \
-	rsyslog \
 	curl \
-	nano
+	nano \
+	rsyslog
 
 RUN apt-get clean
 
