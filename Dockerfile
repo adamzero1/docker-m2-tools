@@ -30,6 +30,6 @@ RUN sed -i 's/mydestination = .*/mydestination = localhost/' /etc/postfix/main.c
 
 #RUN usermod -m -d /usr/share/nginx www-data
 COPY files/entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+RUN chmod a+x /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
