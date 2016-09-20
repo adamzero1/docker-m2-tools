@@ -36,7 +36,7 @@ RUN chmod a+x /entrypoint.sh
 VOLUME [ "/var/www/html" ]
 
 # Add user
-RUN useradd -U -m -u 1000 -G sudo,www-data -d /home/magento magento
+RUN useradd -U -m -u 1000 -G sudo,www-data -d /home/magento ${DEFAULT_USER}
 # User specifics
 RUN echo "" >> /home/magento/.bashrc
 RUN echo "#Zero1 - Additions" >> /home/magento/.bashrc
