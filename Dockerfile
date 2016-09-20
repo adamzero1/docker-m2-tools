@@ -32,4 +32,13 @@ RUN sed -i 's/mydestination = .*/mydestination = localhost/' /etc/postfix/main.c
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
+# Define mountable directories.
+VOLUME [ "/var/www/html" ]
+
+# Add user
+RUN useradd -U -m -u 1000 -G sudo -d /var/www/html www-data
+
+# Define working directory.
+WORKDIR /var/www/html
+
 ENTRYPOINT ["/entrypoint.sh"]
