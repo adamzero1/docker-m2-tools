@@ -33,7 +33,7 @@ COPY files/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
 # Define mountable directories.
-VOLUME [ "/var/www/html", "/home/magento/.ssh" ]
+VOLUME [ "/var/www/html", "/home/magento/.ssh", "/mysql-imports" ]
 
 # Define working directory.
 WORKDIR /var/www/html
