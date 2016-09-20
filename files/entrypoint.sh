@@ -15,6 +15,10 @@ echo "user=${MYSQL_USER}" >> /home/magento/.my.cnf
 echo "password=${MYSQL_PASSWORD}" >> /home/magento/.my.cnf
 echo "database=${MYSQL_DATABASE}" >> /home/magento/.my.cnf
 
+# Git Config
+git config --global user.email "${GIT_EMAIL}"
+git config --global user.name "${GIT_NAME}"
+
 tail -f -n0 /etc/hosts
 
 su --login www-data --shell=/bin/bash
