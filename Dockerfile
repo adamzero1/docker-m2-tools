@@ -36,7 +36,7 @@ RUN chmod a+x /entrypoint.sh
 VOLUME [ "/var/www/html" ]
 
 # Add user
-RUN useradd -U -m -u 1000 -G sudo -d /var/www/html www-data
+RUN useradd -U -m -u 1000 -G sudo,www-data -d /home/magento magento
 
 # Define working directory.
 WORKDIR /var/www/html
