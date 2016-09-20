@@ -19,6 +19,8 @@ echo "database=${MYSQL_DATABASE}" >> /home/magento/.my.cnf
 git config user.email "${GIT_EMAIL}"
 git config user.name "${GIT_NAME}"
 
+chown -R ${DEFAULT_USER}:${DEFAULT_USER} /home/magento
+
 tail -f -n0 /etc/hosts
 
 su --login www-data --shell=/bin/bash
