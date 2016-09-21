@@ -32,6 +32,10 @@ RUN sed -i 's/mydestination = .*/mydestination = localhost/' /etc/postfix/main.c
 COPY files/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
+# Utils
+COPY file/reimport-db /usr/local/bin/reimport-db
+RUN chmod a+x /usr/local/bin/reimport-db
+
 # Define mountable directories.
 VOLUME [ "/var/www/html", "/home/magento/.ssh", "/mysql-imports" ]
 
