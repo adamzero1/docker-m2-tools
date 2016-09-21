@@ -1,0 +1,14 @@
+#!/bin/bash
+mysqlFile=/mysql-imports/db_backup.sql
+
+if [ -f $mysqlFile ]; then
+    echo "dropping $MYSQL_DATABASE"
+    echo "DROP SCHEMA $MYSQL_DATABASE;" | mysql
+    echo "creating $MYSQL_DATABASE"
+    echo "CREATE SCHEMA $MYSQL_DATABASE;" | mysql --no-defaults -u $MYSQL_USER -p$MYSQL_PASSWORD -h $MYSQL_HOST_ALIAS
+    echo "importing $mysqlFile"
+    mysql < $mysqlFile
+    echo "done"
+else
+    echo "$mysqlFile doesn't exist, bailing"
+fi
