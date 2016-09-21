@@ -22,6 +22,9 @@ git config user.name "${GIT_NAME}"
 
 chown -R ${DEFAULT_USER}:${DEFAULT_USER} /home/magento
 
+# PHP Cli
+sed -i "s/^;zend.multibyte = Off/zend.multibyte = On/g" /etc/php/7.0/cli/php.ini
+
 tail -f -n0 /etc/hosts
 
 su --login www-data --shell=/bin/bash
