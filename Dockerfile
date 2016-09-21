@@ -33,7 +33,7 @@ COPY files/entrypoint.sh /entrypoint.sh
 RUN chmod a+x /entrypoint.sh
 
 # Utils
-COPY file/reimport-db /usr/local/bin/reimport-db
+COPY files/reimport-db /usr/local/bin/reimport-db
 RUN chmod a+x /usr/local/bin/reimport-db
 
 # Define mountable directories.
