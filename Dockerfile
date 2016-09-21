@@ -13,6 +13,7 @@ RUN export TERM=xterm; apt-get update && apt-get install -y --force-yes \
 	php7.0-cli \
 	php7.0-soap \
 	php7.0-mbstring \
+	php7.0-intl \
 	git-core \
 	mysql-client \
 	curl \
