@@ -38,6 +38,7 @@ case "$mode" in
          
         *)
             echo "Mode $mode not recognised, usage: lazyman [production|development]"
+            exit 0
             ;;
 esac
 
