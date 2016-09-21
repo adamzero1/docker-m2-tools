@@ -1,0 +1,46 @@
+!#/bin/bash
+
+function runDevelopment() {
+  php bin/magento module:enable --all -c;
+  rm -rf var/di var/generation var/cache pub/static/frontend;
+  php bin/magento deploy:mode:set developer;
+  php bin/magento setup:upgrade;
+  php bin/magento setup:static-content:deploy en_GB en_US; 
+  php bin/magento cache:flush;
+}
+
+function runProduction() {
+  php bin/magento cache:disable;
+  php bin/magento module:enable --all -c;
+  rm -rf var/di var/generation var/cache;
+  php bin/magento deploy:mode:set developer; 
+  php bin/magento setup:upgrade;
+  php bin/magento deploy:mode:set production;
+  php bin/magento setup:static-content:deploy en_GB en_US; 
+  php bin/magento cache:enable;
+  php bin/magento cache:flush;
+}
+
+mode=$1
+if [ -z $mode ]; then
+  echo "no mode specified, defaulting to development"
+  mode="development"
+fi;
+
+case "$mode" in
+        development)
+            runDevelopment
+            ;;
+         
+        production)
+            runProduction
+            ;;
+         
+        *)
+            echo "Mode $mode not recognised, usage: lazyman [production|development]"
+            ;;
+esac
+
+echo "==================================================================="
+echo "done"
+echo "==================================================================="
