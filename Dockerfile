@@ -37,6 +37,8 @@ RUN chmod a+x /entrypoint.sh
 # Utils
 COPY files/reimport-db /usr/local/bin/reimport-db
 RUN chmod a+x /usr/local/bin/reimport-db
+COPY files/lazyman /usr/local/bin/lazyman
+RUN chmod a+x /usr/local/bin/lazyman
 
 # Define mountable directories.
 VOLUME [ "/var/www/html", "/home/magento/.ssh", "/mysql-imports" ]
