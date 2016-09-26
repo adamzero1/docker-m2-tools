@@ -1,5 +1,6 @@
 #!/bin/bash
 mysqlFile=/mysql-imports/db_backup.sql
+additionalsFile=/mysql-imports/additionals.txt
 
 if [ -f $mysqlFile ]; then
     echo "dropping $MYSQL_DATABASE"
@@ -9,6 +10,16 @@ if [ -f $mysqlFile ]; then
     echo "importing $mysqlFile"
     mysql < $mysqlFile
     echo "done"
+    
+    if [ -f "$additionalsFile" ]; then
+        echo "additionals found, running them"
+        while IFS= read -r line; do
+            echo " running: $line"
+            echo "$line" | mysql
+        done <"$additionalsFile"
+    else
+        echo "$addtionalsFile not found, no custom sql will be ran"
+    fi
 else
     echo "$mysqlFile doesn't exist, bailing"
 fi
